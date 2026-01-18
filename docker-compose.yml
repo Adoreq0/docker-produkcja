@@ -1,8 +1,8 @@
-version: '3.8'
+
+version: "3.8"
 
 services:
-    # Baza danych MySQL
-    mysql:
+  mysql:
     image: mysql:8.0.36
     restart: always
     env_file: .env
@@ -16,7 +16,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # WordPress
   wordpress:
     image: wordpress:6.4.3-php8.2-apache
     restart: always
@@ -30,12 +29,11 @@ services:
       - wordpress_network
     ports:
       - "80:80"
-# Wolumeny do przechowywania danych
+
 volumes:
   mysql_data:
   wordpress_data:
-  
-# Sieć dla kontenerów
+
 networks:
   wordpress_network:
     driver: bridge
